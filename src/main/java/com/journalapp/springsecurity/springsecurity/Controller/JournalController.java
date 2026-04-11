@@ -75,7 +75,7 @@ public class JournalController {
             List<journals> jounralList = user.get().getJounralList().stream().filter(j -> j.getId().equals(id)).collect(Collectors.toList());
             if(!jounralList.isEmpty())
             {
-                IO.println("check journal inside");
+                System.out.println("check journal inside");
                 return new ResponseEntity<>(jounralList,HttpStatus.OK);
             }
         }
