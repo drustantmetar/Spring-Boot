@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > UserServiceTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.journalapp.springsecurity.springsecurity.service</a>
+</div>
+
+<h1>Coverage Summary for Class: UserServiceTest (com.journalapp.springsecurity.springsecurity.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserServiceTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (12/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.journalapp.springsecurity.springsecurity.service;
+&nbsp;import com.journalapp.springsecurity.springsecurity.Model.users;
+&nbsp;import com.journalapp.springsecurity.springsecurity.Repository.UserRepository;
+&nbsp;import org.junit.jupiter.api.Disabled;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import org.junit.jupiter.params.ParameterizedTest;
+&nbsp;import org.junit.jupiter.params.provider.CsvSource;
+&nbsp;import org.junit.jupiter.params.provider.ValueSource;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.boot.test.context.SpringBootTest;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;import static org.junit.jupiter.api.Assertions.*;
+&nbsp;
+&nbsp;@SpringBootTest
+<b class="fc">&nbsp;public class UserServiceTest {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    UserRepository userRepository;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void basicTest()
+&nbsp;    {
+<b class="fc">&nbsp;        assertEquals(2, 2);</b>
+<b class="fc">&nbsp;        assertEquals(2, 3-1);</b>
+&nbsp;    }
+&nbsp;    @Disabled
+&nbsp;    @Test
+&nbsp;    public void Test2()
+&nbsp;    {
+&nbsp;//        assertEquals(210, 1-1);
+<b class="nc">&nbsp;        assertEquals(50, 25+25);</b>
+<b class="nc">&nbsp;        assertTrue(10&gt;=10);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetUsername()
+&nbsp;    {
+<b class="fc">&nbsp;        assertNotNull(userRepository.findByUsername(&quot;Drustant&quot;));</b>
+<b class="fc">&nbsp;        Optional&lt;users&gt; user = userRepository.findByUsername(&quot;Drustant&quot;);</b>
+<b class="fc">&nbsp;        assertTrue(user.isPresent());</b>
+<b class="fc">&nbsp;        assertFalse(user.get().jounralList.isEmpty());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ParameterizedTest
+&nbsp;    @CsvSource({
+&nbsp;            &quot;Drustant&quot;,
+&nbsp;            &quot;Madhav&quot;,
+&nbsp;            &quot;Sharayu&quot;,
+&nbsp;            &quot;Shiv&quot;,
+&nbsp;            &quot;Kiran&quot;
+&nbsp;    })
+&nbsp;    public void checkName(String name)
+&nbsp;    {
+<b class="fc">&nbsp;        Optional&lt;users&gt; user = userRepository.findByUsername(name);</b>
+<b class="fc">&nbsp;        assertNotNull(user.get().getJounralList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @ParameterizedTest
+&nbsp;    @CsvSource({
+&nbsp;            &quot;1,2,3&quot;,
+&nbsp;            &quot;20,20,40&quot;,
+&nbsp;            &quot;40,5,60&quot;
+&nbsp;    })
+&nbsp;    public void paraTest(int a, int b ,int expected)
+&nbsp;    {
+<b class="fc">&nbsp;        assertEquals(a+b,expected);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ParameterizedTest
+&nbsp;    @ValueSource(strings = {
+&nbsp;            &quot;Drustant&quot;,
+&nbsp;            &quot;Sharayu&quot;,
+&nbsp;            &quot;shiv&quot;,
+&nbsp;            &quot;radhe&quot;
+&nbsp;    })
+&nbsp;    public void checkUsername(String username)
+&nbsp;    {
+<b class="fc">&nbsp;        Optional&lt;users&gt; user =  userRepository.findByUsername(username);</b>
+<b class="fc">&nbsp;        assertTrue(user.isPresent());</b>
+&nbsp;    }
+&nbsp;    // Provide the Argument provide by by JUnit Test
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-04-09 12:58</div>
+</div>
+</body>
+</html>
