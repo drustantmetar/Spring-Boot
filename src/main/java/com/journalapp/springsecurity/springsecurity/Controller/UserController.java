@@ -2,7 +2,11 @@ package com.journalapp.springsecurity.springsecurity.Controller;
 
 import com.journalapp.springsecurity.springsecurity.Model.users;
 import com.journalapp.springsecurity.springsecurity.Repository.UserRepository;
+import com.journalapp.springsecurity.springsecurity.Services.MarketDataAnalysisAPICall;
 import com.journalapp.springsecurity.springsecurity.Services.UserService;
+import com.journalapp.springsecurity.springsecurity.Services.WeatherApiCall;
+import com.journalapp.springsecurity.springsecurity.api.response.WeatherResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 //@RequestMapping("/userController")
+@Slf4j
 @RestController
 public class UserController {
 
@@ -28,6 +33,11 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    MarketDataAnalysisAPICall  marketDataAnalysisAPICall;
+
+    @Autowired
+    WeatherApiCall   weatherApiCall;
 
 //    @PostMapping("/saveData")
 //    public ResponseEntity<?> SaveDetails(@RequestBody users user)
@@ -89,6 +99,29 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+
+    @GetMapping("/check-weather")
+    public ResponseEntity<Object> getWaterinfo()
+    {
+        try
+        {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            auth.getName();
+            return new ResponseEntity<>("Hi Weather "+marketDataAnalysisAPICall.getInfo(),HttpStatus.OK);
+        }
+        catch(Exception e)
+        {
+            log.error("The exception in weather APU {}",e.getMessage());
+        }
+        return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/weather/{City}")
+    public ResponseEntity<Object> weatherResponse(@PathVariable String City)
+    {
+        WeatherResponse weatherResponse = weatherApiCall.WeatherService(City);
+        return new ResponseEntity<>(weatherResponse,HttpStatus.OK);
     }
 
 //    @DeleteMapping("/{id}")
