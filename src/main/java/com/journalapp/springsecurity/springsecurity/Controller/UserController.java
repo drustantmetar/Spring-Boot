@@ -6,6 +6,7 @@ import com.journalapp.springsecurity.springsecurity.Services.MarketDataAnalysisA
 import com.journalapp.springsecurity.springsecurity.Services.UserService;
 import com.journalapp.springsecurity.springsecurity.Services.WeatherApiCall;
 import com.journalapp.springsecurity.springsecurity.api.response.WeatherResponse;
+import com.journalapp.springsecurity.springsecurity.cache.AppCache;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class UserController {
 
     @Autowired
     WeatherApiCall   weatherApiCall;
+
+    @Autowired
+    AppCache appCache;
 
 //    @PostMapping("/saveData")
 //    public ResponseEntity<?> SaveDetails(@RequestBody users user)
@@ -122,6 +126,14 @@ public class UserController {
     {
         WeatherResponse weatherResponse = weatherApiCall.WeatherService(City);
         return new ResponseEntity<>(weatherResponse,HttpStatus.OK);
+    }
+
+    // We can run this api after doing changes into the DB then we do not need to restart the whole application
+    @GetMapping("/refresh/apis")
+    public ResponseEntity<Object> refreshAPIs()
+    {
+        appCache.init();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 //    @DeleteMapping("/{id}")

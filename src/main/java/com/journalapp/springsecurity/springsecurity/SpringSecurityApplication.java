@@ -2,7 +2,6 @@ package com.journalapp.springsecurity.springsecurity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;;
 
@@ -17,8 +16,5 @@ public class SpringSecurityApplication {
 
     // used this to get the response from the External API by using RestTemplete
     // Here this Bean is Initialize the RestTemplete / It'a an implementation
-    @Bean
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
-    }
+
 }

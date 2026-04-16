@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class MarketDataAnalysisAPICall {
     public static final String apikey1="1Q3h5GFWxupaMseOWutAXVhcfm9pp47n";
+
     // there is fault is kye My code is correct
     public static final String API = "https://api.massive.com/v3/reference/dividends?apiKey=apikey1";
 
