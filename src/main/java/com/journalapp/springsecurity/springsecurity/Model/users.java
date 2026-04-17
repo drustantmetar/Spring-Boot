@@ -28,6 +28,10 @@ public class users {
 
     private List<String> roles;
 
+    private String email;
+    private boolean sentimentAnalysis;
+    private int age;
+
     @DBRef
     public List<journals> jounralList = new ArrayList<>(); // List structure created
 

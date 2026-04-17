@@ -2,6 +2,7 @@ package com.journalapp.springsecurity.springsecurity.Controller;
 
 import com.journalapp.springsecurity.springsecurity.Model.users;
 import com.journalapp.springsecurity.springsecurity.Repository.UserRepository;
+import com.journalapp.springsecurity.springsecurity.Repository.mongoTempleteImpl;
 import com.journalapp.springsecurity.springsecurity.Services.MarketDataAnalysisAPICall;
 import com.journalapp.springsecurity.springsecurity.Services.UserService;
 import com.journalapp.springsecurity.springsecurity.Services.WeatherApiCall;
@@ -42,6 +43,10 @@ public class UserController {
 
     @Autowired
     AppCache appCache;
+
+    @Autowired
+    mongoTempleteImpl mongoTempleteImpl1;
+
 
 //    @PostMapping("/saveData")
 //    public ResponseEntity<?> SaveDetails(@RequestBody users user)
@@ -134,6 +139,12 @@ public class UserController {
     {
         appCache.init();
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getSentiment")
+    private ResponseEntity<Object> getAnalysis()
+    {
+        return new ResponseEntity<>(mongoTempleteImpl1.getDetails(),HttpStatus.OK);
     }
 
 //    @DeleteMapping("/{id}")
