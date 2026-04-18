@@ -141,6 +141,8 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // mongotTempleteImpl + UserController + ConfigJournalAppEntity + AppCache
+    // It get the details from the Repository not from any service
     @GetMapping("/getSentiment")
     private ResponseEntity<Object> getAnalysis()
     {

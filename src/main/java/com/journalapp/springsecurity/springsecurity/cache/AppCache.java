@@ -25,6 +25,7 @@ public class AppCache {
     
     public Map<String,String> Cache;
 
+// mongotTempleteImpl + UserController + ConfigJournalAppEntity + AppCache
 
     @PostConstruct
     public void init() {
@@ -33,7 +34,7 @@ public class AppCache {
         if (all != null && !all.isEmpty()) {
             for (ConfigJournalAppEntity entity : all) {
                 if (entity.getKey() != null && entity.getValue() != null) {
-                    Cache.put(entity.getKey(), entity.getValue());
+                    Cache.put(entity.getKey(), entity.getValue()); // Here get the from DB and put it into the cache
                 }
             }
             System.out.println("✅ Cache initialized with " + Cache.size() + " entries.");
