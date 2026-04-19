@@ -9,7 +9,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
-
     @Bean
     public RedisTemplate <String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         {
@@ -20,7 +19,7 @@ public class RedisConfig {
             return redisTemplate;
 
             // After the setting up serializer if we can set the key and value through
-            // redis-cli those we can get it from spring boot and vide - versa
+            // redis-cli those we can get it from spring boot and vice - versa
             // After above the configuration the serizalition and de-serialization is set
 
         }

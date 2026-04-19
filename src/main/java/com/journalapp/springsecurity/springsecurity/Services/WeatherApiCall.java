@@ -38,6 +38,8 @@ public class WeatherApiCall {
         }
         else{
             // keys = enum declared into the AppCache
+
+
             String finalAPI= appCache.Cache.get(AppCache.keys.WEATHER_API_KEY.toString()).replace(constantValues.key,key).replace(constantValues.value,city);
             ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
             if(response!=null)

@@ -8,16 +8,16 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 
 @SpringBootTest
-public class ResdisTests {
+public class RedisTests {
 
     @Autowired
     RedisTemplate<String,String> redisTemplate;
 
     @Disabled
     @Test
-    void restTest()
+    void redisTest()
     {
-//        redisTemplate.opsForValue().set("myMail","drustant.metar@gmail.com");
+        redisTemplate.opsForValue().set("myMail","drustant.metar@gmail.com");
         String email = redisTemplate.opsForValue().get("salary");
         System.out.println(email);
     }
