@@ -1,5 +1,7 @@
 package com.journalapp.springsecurity.springsecurity.Model;
 
+import com.journalapp.springsecurity.springsecurity.Services.SentimentAnalysisService;
+import com.journalapp.springsecurity.springsecurity.enums.Sentiment;
 import jakarta.annotation.Nonnull;
 import lombok.Builder;
 import lombok.Data;
@@ -25,11 +27,8 @@ public class users {
 
     @Nonnull
     private String password;
-
     private List<String> roles;
-
     private String email;
-    private boolean sentimentAnalysis;
     private int age;
 
     @DBRef

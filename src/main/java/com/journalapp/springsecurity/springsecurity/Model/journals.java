@@ -1,5 +1,6 @@
 package com.journalapp.springsecurity.springsecurity.Model;
 
+import com.journalapp.springsecurity.springsecurity.enums.Sentiment;
 import lombok.Data;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
@@ -17,5 +18,6 @@ public class journals {
     private String title;
     private String content;
     private LocalDateTime date;
+//    private Sentiment sentiment;
 
 }

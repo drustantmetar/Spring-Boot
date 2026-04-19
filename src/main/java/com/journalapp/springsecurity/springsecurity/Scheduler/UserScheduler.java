@@ -39,6 +39,7 @@ public class UserScheduler {
         for(users user : allUsers)
         {
             List<journals> jounralList = user.getJounralList();
+            // added the column of the sentiment into journal as well as in users collection
             List<String> filteredJournalEntries = jounralList.stream().filter(x -> x.getDate().isBefore(LocalDateTime.now())).map(x -> x.getTitle()).collect(Collectors.toList());
             String combineEntries = String.join(", ", filteredJournalEntries);
             System.out.println("combineEntries "+combineEntries);
