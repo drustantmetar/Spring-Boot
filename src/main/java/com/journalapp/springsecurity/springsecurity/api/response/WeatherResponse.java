@@ -18,6 +18,5 @@ public class WeatherResponse {
                 public String region;
                 public String lat;
                 public String lon;
-
         }
 }
