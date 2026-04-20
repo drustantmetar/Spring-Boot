@@ -16,6 +16,7 @@ public class SpringSecurityApplication {
 //        System.out.println(context.getEnvironment().getProperty("spring.profiles.active"));
     }
 
+    
     // used this to get the response from the External API by using RestTemplete
     // Here this Bean is Initialize the RestTemplete / It'a an implementation
 
