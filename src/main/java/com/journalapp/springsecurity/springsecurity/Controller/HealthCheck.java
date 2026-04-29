@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Tag(name = "HEALTH CHECK API CALL")
+@Tag(name = "HEALTH CHECK API CALL")  // It a tag of Swagger
 public class HealthCheck {
-    @Operation(summary = "Used to check the Health of the application")
+    @Operation(summary = "Used to check the Health of the application") // It will be display as decription of the end-point
     @GetMapping("/health-check")
     public String health() {
         return "Hello World";
